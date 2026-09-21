@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5230硬格机-诺基亚N73硬格与恢复出厂设置详细教程</title>
+    <meta name="keywords" content="5230硬格机,诺基亚5230硬格,手机恢复出厂设置,刷机救砖,诺基亚维修">
+    <meta name="description" content="本站提供诺基亚5230硬格机的完整操作教程，包含软格与硬格的区别、详细步骤、准备工作及刷机救砖指南，帮助用户解决手机死机、白屏及软件故障问题。">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0088cc;
+            --secondary-color: #f0f4f8;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --border-color: #e1e4e8;
+            --white: #ffffff;
+            --warning: #d9534f;
+            --success: #5cb85c;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-dark);
+            background-color: #f6f7f9;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #006699;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            color: var(--text-dark);
+        }
+
+        /* Warning Box */
+        .alert-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+            margin-top: -2px;
+        }
+
+        .alert-content strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+                gap: 10px;
+            }
+            nav ul {
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step-item p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .step-item strong {
+            display: block;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Pre Code Block */
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ccc;
+            padding: 40px 0;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>5230</span> 维修指南
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#soft-reset">软格教程</a></li>
+                    <li><a href="#hard-reset">硬格步骤</a></li>
+                    <li><a href="#preparation">准备工作</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>诺基亚5230硬格机全攻略</h1>
+            <p>解决死机、白屏、软件冲突及反应迟钝的终极方案，恢复手机出厂设置。</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Alert -->
+        <div class="alert-box">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+                <strong>重要提示</strong>
+                <p>硬格机将清除手机内部所有数据（包括通讯录、短信、安装的应用程序和照片）。请务必在操作前备份重要资料。</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Soft Reset Card -->
+            <article class="card">
+                <h3>方法一：软格机（推荐首选）</h3>
+                <p style="margin-bottom: 15px; color: var(--text-gray);">软格机仅清除个人数据，不会删除系统软件，风险较低。</p>
+                <div class="step-list">
+                    <div class="step-item">
+                        <strong>进入操作界面</strong>
+                        <p>在手机待机状态下，输入 <code>**#7370#</code>。</p>
+                    </div>
+                    <div class="step-item">
+                        <strong>输入安全码</strong>
+                        <p>系统会提示输入安全码，默认通常为 <strong>12345</strong>。如果修改过请输入您设置的密码。</p>
+                    </div>
+                    <div class="step-item">
+                        <strong>确认操作</strong>
+                        <p>点击“确定”或“是”，手机将自动重启并恢复出厂设置。</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Hard Reset Card -->
+            <article class="card">
+                <h3>方法二：硬格机（彻底修复）</h3>
+                <p style="margin-bottom: 15px; color: var(--text-gray);">当软格无效或手机处于白屏、死机无法操作状态时使用。</p>
+                <div class="step-list">
+                    <div class="step-item">
+                        <strong>关机</strong>
+                        <p>长按挂机键（红键）关机，确保手机完全断电。</p>
+                    </div>
+                    <div class="step-item">
+                        <strong>组合按键</strong>
+                        <p>在手机完全关机状态下，同时按住 <strong>音量上键 + 拍照键 + 挂机键</strong>（N73用户为：音量减 + 拍照键 + 挂机键）不放。</p>
+                    </div>
+                    <div class="step-item">
+                        <strong>等待开机</strong>
+                        <p>保持按键不放，直到手机屏幕出现 Nokia Logo 标志，然后松开按键。</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Comparison Section -->
+        <section>
+            <h2 class="section-title">软格与硬格的区别</h2>
+            <div class="card">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>对比项</th>
+                            <th>软格机</th>
+                            <th>硬格机</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>操作方式</strong></td>
+                            <td>通过输入指令代码</td>
+                            <td>通过硬件组合按键</td>
+                        </tr>
+                        <tr>
+                            <td><strong>数据影响</strong></td>
+                            <td>清除个人数据（通讯录、短信、图片），保留系统软件</td>
+                            <td>清除所有数据，重装系统软件</td>
+                        </tr>
+                        <tr>
+                            <td><strong>适用场景</strong></td>
+                            <td>手机反应慢、软件冲突、轻微死机</td>
+                            <td>白屏、死机无法开机、系统严重损坏</td>
+                        </tr>
+                        <tr>
+                            <td><strong>操作难度</strong></td>
+                            <td>简单，需输入密码</td>
+                            <td>中等，需精确控制按键时机</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" style="margin-top: 40px;">
+            <h2 class="section-title">常见问题解答</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>硬格机后安全码会变吗？</h3>
+                    <p style="color: var(--text-gray);">是的，硬格机后默认安全码通常重置为 <strong>12345</strong>。如果您之前修改过安全码且忘记，可能需要通过专业的软件工具（如Phoenix）进行解锁。</p>
+                </div>
+                <div class="card">
+                    <h3>硬格机后需要重新安装软件吗？</h3>
+                    <p style="color: var(--text-gray);">5230等老款S60V5手机硬格后，系统自带的软件（如浏览器、地图）会保留，但您之前安装的第三方软件需要重新下载安装。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col" style="flex: 2;">
+                    <h4>诺基亚5230维修指南</h4>
+                    <p>专注于S60V5系统设备的维护与修复教程，提供实用的硬格机、刷机及系统优化建议。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>相关资源</h4>
+                    <ul>
+                        <li><a href="#">固件下载</a></li>
+                        <li><a href="#">驱动安装</a></li>
+                        <li><a href="#">配件选购</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 诺基亚5230硬格机技术支持站. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
