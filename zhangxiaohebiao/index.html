@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="张小盒表情官方资源站，提供张小盒系列经典表情包、搞怪动态图及高清壁纸下载，分享职场幽默与青春记忆。">
+    <meta name="keywords" content="张小盒表情,张小盒,表情包,搞笑表情,职场表情,张小盒动态图">
+    <title>张小盒表情-经典搞怪表情包与职场幽默资源站</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #5C9EAD;
+            --secondary-color: #8BC0C7;
+            --accent-color: #FFB347;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #F9F9F9;
+            --bg-card: #FFFFFF;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #4A8E99;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: rgba(92, 158, 173, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(92, 158, 173, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+        }
+
+        .cat-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .cat-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cat-count {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+            group: ;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-thumb {
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover .gallery-thumb img {
+            transform: scale(1.1);
+        }
+
+        .gallery-info {
+            padding: 15px;
+        }
+
+        .gallery-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .gallery-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(92, 158, 173, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-brand p {
+            color: #bdc3c7;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#5C9EAD"/>
+                    <path d="M8.5 9C9.33 9 10 8.33 10 7.5C10 6.67 9.33 6 8.5 6C7.67 6 7 6.67 7 7.5C7 8.33 7.67 9 8.5 9Z" fill="#5C9EAD"/>
+                    <path d="M15.5 9C16.33 9 17 8.33 17 7.5C17 6.67 16.33 6 15.5 6C14.67 6 14 6.67 14 7.5C14 8.33 14.67 9 15.5 9Z" fill="#5C9EAD"/>
+                    <path d="M12 17C13.66 17 15 15.66 15 14H9C9 15.66 10.34 17 12 17Z" fill="#5C9EAD"/>
+                </svg>
+                <span>张小盒表情</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#gallery">表情大全</a></li>
+                    <li><a href="#categories">分类浏览</a></li>
+                    <li><a href="#about">关于张小盒</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#gallery" class="btn btn-primary">立即下载</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>释放你的职场幽默<br>经典张小盒表情包</h1>
+                    <div class="hero-tags">
+                        <span class="tag">职场吐槽</span>
+                        <span class="tag">搞怪搞笑</span>
+                        <span class="tag">高清原图</span>
+                    </div>
+                    <p>汇聚张小盒系列最受欢迎的表情包与动态GIF，无论是工作汇报、朋友聊天还是社交媒体分享，这里都有你需要的“表情包搭子”。支持多种格式一键下载。</p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/zhaoxiaohai/600/400.jpg" alt="张小盒表情包展示" width="600" height="400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2 style="font-size: 28px; margin-bottom: 10px;">热门分类</h2>
+                    <p style="color: var(--text-light);">按场景快速找到最适合的表情</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <span class="cat-icon">💼</span>
+                        <div class="cat-title">职场摸鱼</div>
+                        <div class="cat-count">120+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">🤔</span>
+                        <div class="cat-title">搞怪思考</div>
+                        <div class="cat-count">85+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">😭</span>
+                        <div class="cat-title">悲伤难过</div>
+                        <div class="cat-count">60+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">😡</span>
+                        <div class="cat-title">生气翻白眼</div>
+                        <div class="cat-count">50+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">🤣</span>
+                        <div class="cat-title">开心大笑</div>
+                        <div class="cat-count">90+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">😴</span>
+                        <div class="cat-title">困倦打盹</div>
+                        <div class="cat-count">45+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">❤️</span>
+                        <div class="cat-title">恋爱表白</div>
+                        <div class="cat-count">30+ 组</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">💯</span>
+                        <div class="cat-title">给力称赞</div>
+                        <div class="cat-count">70+ 组</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section-padding" style="background-color: white;">
+            <div class="container">
+                <div class="text-center">
+                    <h2 style="font-size: 28px; margin-bottom: 10px;">精选推荐</h2>
+                    <p style="color: var(--text-light);">本周最受欢迎的搞怪瞬间</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <!-- Item 1 -->
+                    <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face1/300/200.jpg" alt="张小盒摸鱼表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">周一不想上班</div>
+                            <div class="gallery-meta">
+                                <span>动态GIF</span>
+                                <span>2.3k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face2/300/200.jpg" alt="张小盒翻白眼表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">这就是你说的</div>
+                            <div class="gallery-meta">
+                                <span>静态图</span>
+                                <span>1.8k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face3/300/200.jpg" alt="张小盒哭泣表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">被老板骂哭了</div>
+                            <div class="gallery-meta">
+                                <span>动态GIF</span>
+                                <span>3.1k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face4/300/200.jpg" alt="张小盒赞表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">666666</div>
+                            <div class="gallery-meta">
+                                <span>静态图</span>
+                                <span>1.5k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+
+                     <!-- Item 5 -->
+                     <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face5/300/200.jpg" alt="张小盒偷笑表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">偷笑.jpg</div>
+                            <div class="gallery-meta">
+                                <span>动态GIF</span>
+                                <span>2.0k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+
+                     <!-- Item 6 -->
+                     <div class="gallery-item">
+                        <div class="gallery-thumb">
+                            <img src="https://picsum.photos/seed/face6/300/200.jpg" alt="张小盒疑惑表情" width="300" height="200">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">这是什么操作</div>
+                            <div class="gallery-meta">
+                                <span>静态图</span>
+                                <span>1.2k 下载</span>
+                            </div>
+                            <a href="#" class="download-btn">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="#" class="btn btn-primary" style="padding: 12px 40px; font-size: 16px;">查看更多表情包</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section-padding features">
+            <div class="container">
+                <div class="text-center">
+                    <h2 style="font-size: 28px; margin-bottom: 10px;">为什么选择我们</h2>
+                    <p style="color: var(--text-light);">为用户提供优质的表情包资源体验</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h3>极速加载</h3>
+                        <p>所有图片均经过CDN加速优化，打开速度快，浏览无卡顿。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💎</div>
+                        <h3>高清画质</h3>
+                        <p>精选高分辨率原图与GIF，保证在手机和电脑上显示清晰。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h3>安全无毒</h3>
+                        <p>资源经过人工审核，无恶意代码，放心下载使用。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>张小盒表情</h2>
+                    <p>专注于提供最有趣的职场与生活表情包资源，记录你的每一个搞怪瞬间。让沟通更有趣，让生活更轻松。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">表情大全</a></li>
+                        <li><a href="#">热门排行</a></li>
+                        <li><a href="#">最新更新</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>使用帮助</h4>
+                    <ul>
+                        <li><a href="#">表情包保存方法</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">微博账号</a></li>
+                        <li><a href="#">QQ群交流</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 张小盒表情资源站. All Rights Reserved. 本站资源仅供个人学习交流使用，请勿用于商业用途。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+              </html>
