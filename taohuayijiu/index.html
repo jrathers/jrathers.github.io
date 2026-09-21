@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="匪我思存官方文学社区 - 桃花依旧笑春风，汇聚匪我思存经典言情小说、最新连载作品及独家访谈，提供沉浸式阅读体验。">
+    <meta name="keywords" content="桃花依旧笑春风, 匪我思存, 言情小说, 经典文学, 在线阅读">
+    <title>桃花依旧笑春风-匪我思存经典言情作品与阅读社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --bg-color: #FDFBF7;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-color: #E8E0D5;
+            --white: #FFFFFF;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "SimSun", serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--text-light);
+            font-weight: normal;
+            font-size: 16px;
+            margin-left: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        nav a.active, nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-actions button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .header-actions button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/poetry/1920/600') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: "KaiTi", "STKaiti", serif;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: 2px solid var(--white);
+        }
+
+        .hero-btn:hover {
+            background-color: transparent;
+        }
+
+        /* Main Layout */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+
+        /* Featured Grid */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .book-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-cover {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
+        }
+
+        .book-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-tag {
+            font-size: 12px;
+            color: var(--secondary-color);
+            background-color: rgba(210, 105, 30, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .book-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .book-author {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .book-desc {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .read-btn {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Sidebar Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Latest List */
+        .latest-list {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .item-info p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .item-status {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .status-new {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-ongoing {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* Sidebar Widgets */
+        aside .widget {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 12px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .quote-box {
+            font-family: "KaiTi", "STKaiti", serif;
+            font-size: 18px;
+            color: var(--text-main);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-cloud a {
+            background-color: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .tag-cloud a:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ccc;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-actions {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .header-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">桃花依旧笑春风<span>匪我思存文学社区</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">名家专栏</a></li>
+                    <li><a href="#">经典回顾</a></li>
+                    <li><a href="#">读者论坛</a></li>
+                    <li><a href="#">关于作者</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>登录 / 注册</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>桃花依旧笑春风</h1>
+                <p>在文字的江湖里，重温那些刻骨铭心的爱与痛。匪我思存笔下的悲欢离合，永远是读者心中最柔软的角落。</p>
+                <a href="#featured" class="hero-btn">开始阅读</a>
+            </div>
+        </section>
+
+        <div class="container main-content">
+            <!-- Featured Books -->
+            <section id="featured">
+                <div class="section-title">
+                    <h2>精选书单</h2>
+                    <p>不容错过的经典之作</p>
+                </div>
+                <div class="featured-grid">
+                    <!-- Book 1 -->
+                    <article class="book-card">
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/seed/book1/400/600" alt="东宫封面">
+                        </div>
+                        <div class="book-info">
+                            <span class="book-tag">古装言情</span>
+                            <h3 class="book-title">东宫</h3>
+                            <p class="book-author">匪我思存 著</p>
+                            <p class="book-desc">小枫与李承鄞的爱情，始于初见，终于遗忘。一场误会，半生悔恨，那是刻在骨子里的痛。</p>
+                            <div class="book-meta">
+                                <span>连载中</span>
+                                <a href="#" class="read-btn">立即阅读 &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Book 2 -->
+                    <article class="book-card">
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/seed/book2/400/600" alt="千山暮雪封面">
+                        </div>
+                        <div class="book-info">
+                            <span class="book-tag">都市情感</span>
+                            <h3 class="book-title">千山暮雪</h3>
+                            <p class="book-author">匪我思存 著</p>
+                            <p class="book-desc">莫绍谦与童雪，一场关于占有与救赎的博弈。虐恋情深，步步惊心，爱恨交织。</p>
+                            <div class="book-meta">
+                                <span>完结</span>
+                                <a href="#" class="read-btn">立即阅读 &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Book 3 -->
+                    <article class="book-card">
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/seed/book3/400/600" alt="寂寞空庭春欲晚封面">
+                        </div>
+                        <div class="book-info">
+                            <span class="book-tag">清宫穿越</span>
+                            <h3 class="book-title">寂寞空庭春欲晚</h3>
+                            <p class="book-author">匪我思存 著</p>
+                            <p class="book-desc">康熙与卫琳琅，宫廷深处的爱恨纠葛。宿命般的相遇，却逃不过历史的洪流。</p>
+                            <div class="book-meta">
+                                <span>完结</span>
+                                <a href="#" class="read-btn">立即阅读 &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Content Wrapper -->
+            <div class="content-wrapper">
+                <!-- Latest Updates -->
+                <section>
+                    <div class="section-title" style="text-align: left;">
+                        <h2>最新动态</h2>
+                    </div>
+                    <div class="latest-list">
+                        <div class="list-item">
+                            <div class="item-info">
+                                <h3><a href="#">《来不及说我爱你》番外篇：重逢</a></h3>
+                                <p>更新于 2023-10-24 | 字数：2000</p>
+                            </div>
+                            <span class="item-status status-new">新章节</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <h3><a href="#">作者专访：匪我思存谈“虐恋”美学</a></h3>
+                                <p>更新于 2023-10-20 | 字数：5000</p>
+                            </div>
+                            <span class="item-status status-ongoing">深度</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <h3><a href="#">《碧落黄泉》读者讨论区更新公告</a></h3>
+                                <p>更新于 2023-10-15 | 字数：500</p>
+                            </div>
+                            <span class="item-status status-new">公告</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <h3><a href="#">经典重读：《裂锦》背后的商业与情感</a></h3>
+                                <p>更新于 2023-10-10 | 字数：3500</p>
+                            </div>
+                            <span class="item-status status-ongoing">评论</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <h3><a href="#">《冷月如霜》完结纪念活动开启</a></h3>
+                                <p>更新于 2023-10-05 | 字数：1000</p>
+                            </div>
+                            <span class="item-status status-new">活动</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sidebar -->
+                <aside>
+                    <!-- Quote Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">经典语录</h3>
+                        <div class="quote-box">
+                            “于千万人之中遇见你所要遇见的人，于千万年之中，时间的无涯的荒野里，没有早一步，也没有晚一步，刚巧赶上了，那也没有别的话可说，惟有轻轻地问一声：‘噢，你也在这里吗？’”
+                        </div>
+                        <span class="quote-author">—— 张爱玲（引用）</span>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">热门标签</h3>
+                        <div class="tag-cloud">
+                            <a href="#">虐恋情深</a>
+                            <a href="#">民国旧梦</a>
+                            <a href="#">宫廷权谋</a>
+                            <a href="#">现代都市</a>
+                            <a href="#">BE美学</a>
+                            <a href="#">短篇小说</a>
+                            <a href="#">匪我思存</a>
+                            <a href="#">书评</a>
+                        </div>
+                    </div>
+
+                    <!-- Book Recommendation -->
+                    <div class="widget">
+                        <h3 class="widget-title">为您推荐</h3>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <img src="https://picsum.photos/seed/book4/100/140" style="border-radius: 4px;" alt="封面">
+                            <div>
+                                <h4 style="font-size: 14px; margin-bottom: 5px;"><a href="#">佳期如梦</a></h4>
+                                <p style="font-size: 12px; color: #666;">经典虐文代表作</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="font-size: 14px; line-height: 1.8; color: #999;">桃花依旧笑春风文学社区致力于为读者提供最纯净、最优质的阅读环境。我们珍视每一份情感，守护每一部经典。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">站内搜索</a></li>
+                        <li><a href="#">作者投稿</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#">古装言情</a></li>
+                        <li><a href="#">现代都市</a></li>
+                        <li><a href="#">民国旧梦</a></li>
+                        <li><a href="#">短篇集</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">读者QQ群</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 桃花依旧笑春风文学社区 版权所有. 本站内容仅供学习交流使用，请支持正版。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
