@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DNF地图 - DNF全职业副本攻略与地下城地图导航指南。提供暗黑神殿、安徒恩、卢克、超时空漩涡等热门副本的详细地图分布、BOSS位置、怪物分布及通关路线图。">
+    <meta name="keywords" content="dnf地图,地下城与勇士地图,安徒恩攻略,卢克攻略,超时空漩涡,地下城分布">
+    <title>DNF地图 - DNF全职业副本攻略与地下城地图导航指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #722ed1;
+            --primary-dark: #531dab;
+            --accent-color: #facc15;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --spacing-unit: 1rem;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--card-bg);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f3f0ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            background: #1f2937;
+            border-radius: var(--radius-lg);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .hero-visual::after {
+            content: "最新版本：超时空漩涡 / 希洛克攻坚战";
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        /* Main Content Grid */
+        main {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.75rem;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Card Styles */
+        .map-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            height: 160px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .difficulty-hard { background: #ef4444; }
+        .difficulty-medium { background: #f59e0b; }
+        .difficulty-easy { background: #10b981; }
+
+        .card-body {
+            padding: 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card-meta {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            padding: 0.625rem 1.25rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: #f3f0ff;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .guide-item h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-dark);
+        }
+
+        .guide-item ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .guide-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem 1.5rem;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background: #f9fafb;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1rem 1.5rem;
+            max-height: 500px; /* Arbitrary large height */
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>DNF</span> 地图助手
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">副本地图</a></li>
+                    <li><a href="#">BOSS攻略</a></li>
+                    <li><a href="#">职业推荐</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>全面解析DNF地下城地图与副本攻略</h1>
+                    <p>无论你是新手冒险家还是老牌勇士，这里都有最详细的地下城地图分布、BOSS位置指引以及通关路线规划，助你高效刷图。</p>
+                    <div class="hero-tags">
+                        <span class="tag">安徒恩</span>
+                        <span class="tag">卢克</span>
+                        <span class="tag">超时空漩涡</span>
+                        <span class="tag">希洛克攻坚战</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="https://picsum.photos/seed/dnfmap/600/400" alt="DNF地下城地图示意图">
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Maps Grid -->
+        <section>
+            <div class="section-title">
+                <h2>热门副本地图导航</h2>
+                <a href="#" style="font-size: 0.9rem; color: var(--primary-color); text-decoration: none;">查看全部 &rarr;</a>
+            </div>
+            
+            <div class="grid-layout">
+                <!-- Card 1 -->
+                <article class="map-card">
+                    <div class="card-image">
+                        <span class="difficulty-badge difficulty-hard">困难</span>
+                        <img src="https://picsum.photos/seed/dnf1/400/250" alt="超时空漩涡地图">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">超时空漩涡</h3>
+                        <div class="card-meta">
+                            <span>📍 机械装甲核心</span>
+                            <span>⚡ 状态恢复</span>
+                        </div>
+                        <p class="card-desc">当前版本最高难度团本，分为12个区域，需要掌握BOSS机制与怪物刷新规律。</p>
+                        <a href="#" class="btn">查看详细地图</a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="map-card">
+                    <div class="card-image">
+                        <span class="difficulty-badge difficulty-medium">史诗</span>
+                        <img src="https://picsum.photos/seed/dnf2/400/250" alt="卢克raid地图">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">卢克raid</h3>
+                        <div class="card-meta">
+                            <span>📍 光之摇篮</span>
+                            <span>⚡ 深渊模式</span>
+                        </div>
+                        <p class="card-desc">卢克副本地图结构复杂，包含光、暗两个区域，了解地图走位是通关关键。</p>
+                        <a href="#" class="btn">查看详细地图</a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="map-card">
+                    <div class="card-image">
+                        <span class="difficulty-badge difficulty-easy">普通</span>
+                        <img src="https://picsum.photos/seed/dnf3/400/250" alt="安徒恩地图">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">安徒恩攻坚战</h3>
+                        <div class="card-meta">
+                            <span>📍 黑暗神殿</span>
+                            <span>⚡ 门票消耗</span>
+                        </div>
+                        <p class="card-desc">曾经的团本霸主，包含6个房间，需要团队配合清除杂兵并击杀BOSS。</p>
+                        <a href="#" class="btn">查看详细地图</a>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="map-card">
+                    <div class="card-image">
+                        <span class="difficulty-badge difficulty-medium">史诗</span>
+                        <img src="https://picsum.photos/seed/dnf4/400/250" alt="军团本地图">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">巴卡尔攻坚战</h3>
+                        <div class="card-meta">
+                            <span>📍 红玉的诅咒</span>
+                            <span>⚡ 限时挑战</span>
+                        </div>
+                        <p class="card-desc">最新团本地图，拥有多个阶段和机制，掌握地图位置能极大提升通关效率。</p>
+                        <a href="#" class="btn">查看详细地图</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section class="guide-section">
+            <div class="section-title">
+                <h2>DNF地图探索指南</h2>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <h3>如何快速找到BOSS位置</h3>
+                    <p>在DNF中，每个副本都有固定的BOSS刷新点。建议在进入副本前，先查看该副本的“地图预览图”，记住关键通道和传送门位置。</p>
+                    <ul>
+                        <li>使用“地图探索”功能查看已解锁区域。</li>
+                        <li>注意小地图上的红色感叹号标记。</li>
+                        <li>部分副本需要先清理小怪才会开启通往BOSS的道路。</li>
+                    </ul>
+                </div>
+                <div class="guide-item">
+                    <h3>地图机制与陷阱</h3>
+                    <p>许多高级地下城地图包含陷阱机关，如坠落、挤压或区域封锁。</p>
+                    <ul>
+                        <li>在“卢克”等团本中，注意光之摇篮的传送门切换。</li>
+                        <li>在“超时空漩涡”中，避免长时间停留在红色区域。</li>
+                        <li>保持与队友的距离，防止被地图机制误伤。</li>
+                    </ul>
+                </div>
+                <div class="guide-item">
+                    <h3>职业与地图的适配性</h3>
+                    <p>不同职业对地图的适应能力不同。</p>
+                    <ul>
+                        <li><strong>召唤师/元素师</strong>：适合大范围地图，可快速清理小怪。</li>
+                        <li><strong>狂战士/剑魂</strong>：适合狭窄通道，近战输出更稳定。</li>
+                        <li><strong>奶系职业</strong>：需注意自身站位，避免被地图怪物击杀。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-container">
+            <div class="section-title">
+                <h2>常见问题 (FAQ)</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>为什么我看不到副本地图的详细路线图？</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>通常情况下，DNF游戏内默认显示简化地图。如需查看详细路线图，建议参考本站提供的图文攻略，或使用第三方辅助工具（需注意账号安全）。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>超时空漩涡地图有哪些必知要点？</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>超时空漩涡地图分为机械装甲核心和外层区域。关键点在于掌握“召唤物刷新机制”和“无人机攻击范围”。建议坦克职业优先占据地图高点。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>卢克raid地图有哪些难点？</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>卢克地图的难点在于“光之摇篮”的传送门随机性以及“暗帝”的减防机制。熟悉地图结构可以帮助队伍更快地找到传送门和BOSS位置。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <p style="font-size: 0.9rem; color: #6b7280;">
+                        本站致力于提供最全面、最准确的DNF地下城地图攻略与副本指引。数据基于游戏最新版本整理。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">地下城列表</a></li>
+                        <li><a href="#">BOSS图鉴</a></li>
+                        <li><a href="#">装备推荐</a></li>
+                        <li><a href="#">活动中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助支持</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 DNF地图助手. All Rights Reserved. 本站内容仅供游戏玩家参考，非官方网站。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
